@@ -1,4 +1,4 @@
-import { PawPrint } from "lucide-react"
+import { MapPin, PawPrint } from "lucide-react"
 import { Highlighter } from "@/components/ui/highlighter"
 
 export function Hero() {
@@ -22,6 +22,11 @@ export function Hero() {
           <span className="text-foreground">encher a sua casa de amor</span>
         </Highlighter>
         . Escolha o seu favorito e dê o primeiro passo para uma nova amizade.
+      </p>
+
+      <p className="mx-auto mt-5 flex w-fit items-center gap-1.5 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-bold text-primary">
+        <MapPin className="size-4" />
+        Recife e região
       </p>
     </header>
   )
