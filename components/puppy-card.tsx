@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { PawPrint, Heart } from "lucide-react"
+import { ShineBorder } from "@/components/ui/shine-border"
 import { STATUS_LABELS, type Puppy } from "@/lib/puppies"
 
 interface PuppyCardProps {
@@ -14,7 +15,15 @@ export function PuppyCard({ puppy, onSelect }: PuppyCardProps) {
   const isReserved = puppy.status === "reservado"
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
+    <article className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
+      {!isAdopted && (
+        <ShineBorder
+          borderWidth={2}
+          duration={10}
+          shineColor={["var(--primary)", "var(--secondary)"]}
+          className="z-20"
+        />
+      )}
       <div className="relative aspect-square overflow-hidden bg-muted">
         <Image
           src={puppy.image || "/placeholder.svg"}

@@ -50,7 +50,10 @@ The public page renders from `app/page.tsx` (an async server component), composi
 - **`components/puppy-grid.tsx`** takes `puppies` as a prop; it holds the `selected` puppy state and renders `PuppyCard`s plus a single `AdoptionDialog`.
 - **`components/puppy-card.tsx`** shows a status badge; `adotado` grays the image and replaces the "Quero adotar" button with an inert "Já encontrou um lar" state. `reservado` shows a badge but stays actionable.
 - **`components/adoption-dialog.tsx`** is a hand-rolled modal — own Escape handler, body scroll lock, backdrop-click close. Builds the WhatsApp URL by URL-encoding a pt-BR message interpolating the puppy + optional name/city inputs. When the user clicks "Falar com a Sofia" it also fires a fire-and-forget `POST /api/leads` (`keepalive`) to record the interest before the WhatsApp tab opens. WhatsApp/Instagram icons are inline SVGs at the bottom.
-- **`components/ui/particles.tsx`** is the Magic UI Particles canvas (self-contained, no extra deps), rendered as an absolute background layer in `app/page.tsx` behind `PawBackground` and the content.
+- **Magic UI components** live in `components/ui/`:
+  - `particles.tsx` — canvas background layer in `app/page.tsx` (self-contained, no deps).
+  - `highlighter.tsx` — rough-notation marker effect (deps: `motion`, `rough-notation`); used in `components/hero.tsx` to highlight a phrase in brand orange.
+  - `shine-border.tsx` — animated gradient border on each `PuppyCard` (rendered only for non-adopted cards), colored with the theme vars `var(--primary)`/`var(--secondary)`. Its `shine` keyframe + `--animate-shine` token are defined in `app/globals.css` (Tailwind v4 registers the `animate-shine` utility from that token).
 
 ### Auth + admin
 
