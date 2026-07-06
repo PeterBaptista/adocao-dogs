@@ -1,4 +1,4 @@
-import { boolean, integer, pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core"
+import { boolean, integer, pgEnum, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core"
 
 // --- Domain: puppies ---------------------------------------------------------
 
@@ -13,6 +13,16 @@ export const puppies = pgTable("puppies", {
   blurb: text("blurb").notNull(),
   status: puppyStatus("status").notNull().default("disponivel"),
   sortOrder: integer("sort_order").notNull().default(0),
+})
+
+// Adoption interest form submissions (who filled the "Quero adotar" form).
+export const leads = pgTable("leads", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  puppyId: text("puppy_id"),
+  puppyName: text("puppy_name").notNull(),
+  name: text("name"),
+  city: text("city"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
 })
 
 // --- Better Auth core tables -------------------------------------------------

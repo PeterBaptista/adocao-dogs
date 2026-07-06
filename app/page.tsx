@@ -1,5 +1,6 @@
 import { asc } from "drizzle-orm"
 import { PawBackground } from "@/components/paw-background"
+import { Particles } from "@/components/ui/particles"
 import { Hero } from "@/components/hero"
 import { PuppyGrid } from "@/components/puppy-grid"
 import { ContactFooter } from "@/components/contact-footer"
@@ -25,6 +26,14 @@ export default async function Page() {
 
   return (
     <main className="relative min-h-dvh bg-background">
+      <Particles
+        className="absolute inset-0"
+        quantity={120}
+        ease={70}
+        staticity={40}
+        color="#f28c28"
+        size={0.6}
+      />
       <PawBackground />
       <div className="relative">
         <Hero />

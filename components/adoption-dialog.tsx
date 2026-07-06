@@ -43,6 +43,26 @@ export function AdoptionDialog({ puppy, onClose }: AdoptionDialogProps) {
 
   const whatsappUrl = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(message)}`
 
+  // Persist who showed interest (fire-and-forget; keepalive so it survives the
+  // navigation to WhatsApp). Never block the user's flow if it fails.
+  function saveLead() {
+    try {
+      fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        keepalive: true,
+        body: JSON.stringify({
+          puppyId: puppy!.id,
+          puppyName: puppy!.name,
+          name: name.trim() || undefined,
+          city: city.trim() || undefined,
+        }),
+      }).catch(() => {})
+    } catch {
+      /* ignore */
+    }
+  }
+
   return (
     <div
       role="dialog"
@@ -52,7 +72,7 @@ export function AdoptionDialog({ puppy, onClose }: AdoptionDialogProps) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-md overflow-hidden rounded-t-3xl bg-card shadow-2xl sm:rounded-3xl"
+        className="relative max-h-[92dvh] w-full max-w-md overflow-y-auto rounded-t-3xl bg-card shadow-2xl sm:rounded-3xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -122,6 +142,7 @@ export function AdoptionDialog({ puppy, onClose }: AdoptionDialogProps) {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={saveLead}
             className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 font-bold text-primary-foreground transition-colors hover:bg-primary/90"
           >
             <WhatsAppIcon className="size-5" />
