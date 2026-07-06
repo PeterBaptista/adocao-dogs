@@ -13,6 +13,7 @@ interface PuppyCardProps {
 export function PuppyCard({ puppy, onSelect }: PuppyCardProps) {
   const isAdopted = puppy.status === "adotado"
   const isReserved = puppy.status === "reservado"
+  const isFemale = puppy.sex === "Fêmea"
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
@@ -34,7 +35,11 @@ export function PuppyCard({ puppy, onSelect }: PuppyCardProps) {
             isAdopted ? "grayscale" : ""
           }`}
         />
-        <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-secondary px-3 py-1 text-xs font-bold text-secondary-foreground">
+        <span
+          className={`absolute left-3 top-3 z-30 flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold ${
+            isFemale ? "bg-pink-500 text-white" : "bg-secondary text-secondary-foreground"
+          }`}
+        >
           <PawPrint className="size-3" />
           {puppy.sex}
         </span>
