@@ -84,8 +84,8 @@ export const puppies: PuppySeed[] = [
 ]
 
 export const contact = {
-  name: "Sofia",
+  name: "7 Patinhas Recife",
   phoneDisplay: "(81) 9 8108-3781",
   whatsapp: "5581981083781",
-  instagram: "sofia_bap",
+  instagram: "7patinhasrecife",
 }

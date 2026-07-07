@@ -19,7 +19,7 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: 'Adoção Responsável | Escolha seu filhote',
   description:
-    'Sete filhotes esperando por um lar cheio de amor. Escolha o seu e fale com a Sofia para adotar com responsabilidade.',
+    'Sete filhotes esperando por um lar cheio de amor. Escolha o seu e fale com a 7 Patinhas Recife para adotar com responsabilidade.',
   generator: 'v0.app',
 }
 

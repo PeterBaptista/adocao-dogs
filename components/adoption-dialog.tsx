@@ -37,7 +37,7 @@ export function AdoptionDialog({ puppy, onClose }: AdoptionDialogProps) {
 
   if (!puppy) return null
 
-  const message = `Olá, Sofia! Vi o anúncio de adoção responsável e me apaixonei pelo(a) ${puppy.name} (${puppy.sex}). ${
+  const message = `Olá, 7 Patinhas Recife! Vi o anúncio de adoção responsável e me apaixonei pelo(a) ${puppy.name} (${puppy.sex}). ${
     name ? `Meu nome é ${name}` : ""
   }${city ? `, sou de ${city}` : ""}. Gostaria de saber mais sobre a adoção. 🐾`
 
